@@ -1,0 +1,26 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Preference
+        android:title="@string/about"
+        android:summary="@string/about_app" />
+
+    <Preference
+        android:title="@string/app_version_title"
+        android:key="@string/version_key"
+        android:summary="@string/version_number" />
+
+    <Preference
+        android:key="@string/source_key"
+        android:title="@string/data_source"
+        android:summary="@string/source_link" />
+
+    <Preference
+        android:key="@string/privacy_key"
+        android:title="@string/privacy_policy"/>
+
+    <Preference
+        android:key="@string/rate_key"
+        android:title="@string/rate"/>
+
+</PreferenceScreen>

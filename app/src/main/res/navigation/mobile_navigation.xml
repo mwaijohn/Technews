@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_techcrunch">
+
+    <fragment
+        android:id="@+id/nav_techcrunch"
+        android:name="com.honetware.technology.technews.ui.home.HomeFragment"
+        android:label="@string/menu_techcrunch"
+        tools:layout="@layout/fragment_home"/>
+    <fragment
+        android:id="@+id/nav_hacker_news"
+        android:name="com.honetware.technology.technews.ui.home.HackerNews"
+        android:label="@string/menu_hacker_news"
+        tools:layout="@layout/fragment_home"/>
+    <fragment
+        android:id="@+id/nav_ars_technica"
+        android:name="com.honetware.technology.technews.ui.home.ArsTechnica"
+        android:label="@string/menu_ars_technica"
+        tools:layout="@layout/fragment_home"/>
+    <fragment
+        android:id="@+id/nav_techradar"
+        android:name="com.honetware.technology.technews.ui.home.TechRadar"
+        android:label="@string/menu_techradar"
+        tools:layout="@layout/fragment_home"/>
+    <fragment
+        android:id="@+id/nav_the_verge"
+        android:name="com.honetware.technology.technews.ui.home.TheVerge"
+        android:label="@string/menu_the_verge"
+        tools:layout="@layout/fragment_home"/>
+    <fragment
+        android:id="@+id/nav_google_news"
+        android:name="com.honetware.technology.technews.ui.home.GoogleNews"
+        android:label="@string/menu_google_news"
+        tools:layout="@layout/fragment_home"/>
+    <fragment
+        android:id="@+id/nav_all_news"
+        android:name="com.honetware.technology.technews.ui.home.AllNews"
+        android:label="@string/menu_all_sources"
+        tools:layout="@layout/fragment_home"/>
+</navigation>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="handler"
+            type="com.honetware.technology.technews.Categories.CardClickHandlers" />
+        <variable
+            name="constants"
+            type="utils.Constants" />
+    </data>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <LinearLayout
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".Categories">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:weightSum="100">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    style="@style/CategoriesCard"
+                    android:layout_weight="50"
+                    android:backgroundTint="@color/entertainment"
+                    android:background="@color/entertainment"
+                    android:layout_gravity="center_horizontal"
+                    android:onClick="@{(v) -> handler.entertainment(v,constants.entertainment)}"
+                    android:elevation="2dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        style="@style/TextViewTheme"
+                        android:text="@{constants.entertainment}"/>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    style="@style/CategoriesCard"
+                    android:backgroundTint="@color/technology"
+                    android:background="@color/technology"
+                    android:layout_width="0dp"
+                    android:layout_weight="50"
+                    android:layout_gravity="center_horizontal"
+                    android:onClick="@{(v) -> handler.entertainment(v,constants.technology)}"
+                    android:elevation="2dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        style="@style/TextViewTheme"
+                        android:text="@{constants.technology}"/>
+
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:weightSum="100">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    style="@style/CategoriesCard"
+                    android:layout_weight="50"
+                    android:backgroundTint="@color/business"
+                    android:background="@color/business"
+                    android:layout_gravity="center_horizontal"
+                    android:onClick="@{(v) -> handler.entertainment(v,constants.busines)}"
+                    android:elevation="2dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        style="@style/TextViewTheme"
+                        android:text="@{constants.busines}"/>
+
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:backgroundTint="@color/science"
+                    android:background="@color/science"
+                    style="@style/CategoriesCard"
+                    android:layout_width="0dp"
+                    android:layout_weight="50"
+                    android:layout_gravity="center_horizontal"
+                    android:onClick="@{(v) -> handler.entertainment(v,constants.science)}"
+                    android:elevation="2dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        style="@style/TextViewTheme"
+                        android:text="@{constants.science}"/>
+
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:weightSum="100">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    style="@style/CategoriesCard"
+                    android:layout_weight="50"
+                    android:backgroundTint="@color/health"
+                    android:background="@color/health"
+                    android:layout_gravity="center_horizontal"
+                    android:onClick="@{(v) -> handler.entertainment(v,constants.health)}"
+                    android:elevation="2dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        style="@style/TextViewTheme"
+                        android:text="@{constants.health}"/>
+
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:backgroundTint="@color/sports"
+                    android:background="@color/sports"
+                    android:layout_width="0dp"
+                    style="@style/CategoriesCard"
+                    android:layout_weight="50"
+                    android:layout_gravity="center_horizontal"
+                    android:onClick="@{(v) -> handler.entertainment(v,constants.sports)}"
+                    android:elevation="2dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        style="@style/TextViewTheme"
+                        android:text="@{constants.sports}"/>
+
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:weightSum="100">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    style="@style/CategoriesCard"
+                    android:layout_weight="50"
+                    android:backgroundTint="@color/general"
+                    android:background="@color/general"
+                    android:onClick="@{(v) -> handler.entertainment(v,constants.general)}"
+                    android:layout_gravity="center_horizontal"
+                    android:elevation="2dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        style="@style/TextViewTheme"
+                        android:text="@{constants.general}"/>
+
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

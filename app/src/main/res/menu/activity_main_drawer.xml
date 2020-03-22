@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_techcrunch"
+            android:title="@string/menu_techcrunch" />
+
+        <item
+            android:id="@+id/nav_hacker_news"
+            android:title="@string/menu_hacker_news" />
+        <item
+            android:id="@+id/nav_ars_technica"
+            android:title="@string/menu_ars_technica" />
+        <item
+            android:id="@+id/nav_techradar"
+            android:title="@string/menu_techradar" />
+        <item
+            android:id="@+id/nav_the_verge"
+            android:title="@string/menu_the_verge" />
+        <item
+            android:id="@+id/nav_google_news"
+            android:title="@string/menu_google_news" />
+        <item
+            android:id="@+id/nav_all_news"
+            android:title="@string/menu_all_sources" />
+    </group>
+</menu>

@@ -10,6 +10,7 @@ class Constants{
     val science = "science"
 
     companion object{
+
         val entertainment: String = "Entertainment"
         val health : String ="health"
         val sports : String ="sports"

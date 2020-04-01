@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 
-import utils.SharedPref;
+import utils.Prefs;
 import utils.Utils;
 
 public class MainActivity extends AppCompatActivity {
@@ -45,8 +45,12 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
         //init shared pref
-        SharedPref.init(this);
-        Utils.startAlarm(this,true,false);
+        Prefs.Companion.init(this);
+
+        if (Prefs.Companion.getMSharedPref() != null){
+            Utils.startAlarm(this,true,false);
+        }
+
     }
 
     @Override

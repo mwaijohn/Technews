@@ -34,13 +34,13 @@ public class HackerNews extends Fragment implements SwipeRefreshLayout.OnRefresh
         empty_view = root.findViewById(R.id.empty_view);
         swipeRefreshLayout = root.findViewById(R.id.swipe_container);
 
-        Utils.general(context,recyclerView,empty_view,context.getString(R.string.menu_google_news), Constants.Companion.getPageSize(),swipeRefreshLayout);
+        Utils.general(context,recyclerView,empty_view,context.getString(R.string.menu_hacker_news), Constants.Companion.getPageSize(),swipeRefreshLayout);
 
         return root;
     }
 
     @Override
     public void onRefresh() {
-        Utils.general(context,recyclerView,empty_view,context.getString(R.string.menu_google_news), Constants.Companion.getPageSize(),swipeRefreshLayout);
+        Utils.general(context,recyclerView,empty_view,context.getString(R.string.menu_hacker_news), Constants.Companion.getPageSize(),swipeRefreshLayout);
     }
 }

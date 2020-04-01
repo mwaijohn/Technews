@@ -64,4 +64,5 @@
     <string name="nav_header">TechNews World</string>
     <string name="news_at_one_place">News at one place</string>
     <string name="saved_articles_will_appear_here">saved articles will appear here</string>
+    <string name="connetion_error">Connection error</string>
 </resources>

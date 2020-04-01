@@ -53,21 +53,28 @@ public class Utils {
             call.enqueue(new Callback<StatusPayload>() {
                 @Override
                 public void onResponse(Call<StatusPayload> call, Response<StatusPayload> response) {
-                    StatusPayload statusPayload = response.body();
-                    List<Article> articles = statusPayload.getArticles();
 
-                    if (articles.size()<1){
+                    if (response.code() == 200){
+                        StatusPayload statusPayload = response.body();
+                        List<Article> articles = statusPayload.getArticles();
+
+                        if (articles.size()<1){
+                            textView.setVisibility(View.VISIBLE);
+                        }
+
+                        // Toast.makeText(context, articles.get(0).getTitle(), Toast.LENGTH_SHORT).show();
+                        ArticleListAdapter articleListAdapter = new   ArticleListAdapter(context,articles);
+
+                        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(context);
+                        recyclerView.setLayoutManager(mLayoutManager);
+                        recyclerView.setAdapter(articleListAdapter);
+
+                        swipeRefreshLayout.setRefreshing(false);
+                    }else {
                         textView.setVisibility(View.VISIBLE);
+                        swipeRefreshLayout.setRefreshing(false);
+                        textView.setText(R.string.connetion_error);
                     }
-
-                   // Toast.makeText(context, articles.get(0).getTitle(), Toast.LENGTH_SHORT).show();
-                    ArticleListAdapter articleListAdapter = new   ArticleListAdapter(context,articles);
-
-                    RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(context);
-                    recyclerView.setLayoutManager(mLayoutManager);
-                    recyclerView.setAdapter(articleListAdapter);
-
-                    swipeRefreshLayout.setRefreshing(false);
                 }
 
                 @Override
@@ -103,20 +110,28 @@ public class Utils {
             call.enqueue(new Callback<StatusPayload>() {
                 @Override
                 public void onResponse(Call<StatusPayload> call, Response<StatusPayload> response) {
-                    StatusPayload statusPayload = response.body();
-                    List<Article> articles = statusPayload.getArticles();
 
-                    if (articles.size()<1){
+                    if (response.code() == 200){
+                        StatusPayload statusPayload = response.body();
+                        List<Article> articles = statusPayload.getArticles();
+
+                        if (articles.size()<1){
+                            textView.setVisibility(View.VISIBLE);
+                        }
+
+                        ArticleListAdapter articleListAdapter = new   ArticleListAdapter(context,articles);
+
+                        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(context);
+                        recyclerView.setLayoutManager(mLayoutManager);
+                        recyclerView.setAdapter(articleListAdapter);
+
+                        swipeRefreshLayout.setRefreshing(false);
+                    }else {
                         textView.setVisibility(View.VISIBLE);
+                        swipeRefreshLayout.setRefreshing(false);
+
+                        textView.setText(R.string.connetion_error);
                     }
-
-                    ArticleListAdapter articleListAdapter = new   ArticleListAdapter(context,articles);
-
-                    RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(context);
-                    recyclerView.setLayoutManager(mLayoutManager);
-                    recyclerView.setAdapter(articleListAdapter);
-
-                    swipeRefreshLayout.setRefreshing(false);
                 }
 
                 @Override
@@ -165,18 +180,9 @@ public class Utils {
         // SET TIME HERE
         Calendar calendar= Calendar.getInstance();
 
-//        calendar.set(Calendar.HOUR_OF_DAY,9);
-//        calendar.set(Calendar.MINUTE,55);
-//
-//        myIntent = new Intent(context, AlarmReceiver.class);
-//        pendingIntent = PendingIntent.getBroadcast(context,0,myIntent,0);
-//
-//        if(!isRepeat)
-//            manager.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime()+3000,pendingIntent);
-//        else
-//            manager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY,pendingIntent);
+        String alarmSet = Prefs.Companion.read(Constants.Companion.getAlarm_set(),null);
+        if ( alarmSet == null){
 
-        if (SharedPref.read(Constants.Companion.getAlarm_set(),null) == null){
             calendar.set(Calendar.HOUR_OF_DAY,13);
             calendar.set(Calendar.MINUTE,17);
 
@@ -187,8 +193,15 @@ public class Utils {
                 manager.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime()+3000,pendingIntent);
             else
                 manager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY,pendingIntent);
+
+            Prefs.Companion.write(Constants.Companion.getAlarm_set(),"set");
+
+            //Log.d("alarm___","alarm not set setting up");
         }else {
-            SharedPref.write(Constants.Companion.getAlarm_set(),"set");
+            //SharedPref.write(Constants.Companion.getAlarm_set(),"set");
+
+            Prefs.Companion.write(Constants.Companion.getAlarm_set(),"set");
+            //Log.d("alarm_","alarmset");
         }
 
     }

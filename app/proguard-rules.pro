@@ -20,6 +20,7 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
--keep public class com.technews.technology.technews.model.StatusPayload {*;}
--keep public class com.technews.technology.technews.model.Article {*;}
--keep public class com.technews.technology.technews.model.** {*;}
+#-keep public class com.technews.technology.technews.model.StatusPayload {*;}
+#-keep public class com.technews.technology.technews.model.Article {*;}
+#-keep public class com.technews.technology.technews.model.** {*;}
+#-keep public class utils.Utils {*;}

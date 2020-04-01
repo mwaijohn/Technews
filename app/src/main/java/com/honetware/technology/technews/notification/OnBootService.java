@@ -18,7 +18,7 @@ public class OnBootService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        Utils.startAlarm(getApplicationContext(),true,true);
+        Utils.startAlarm(getApplicationContext(),true,false);
     }
 
     @Override

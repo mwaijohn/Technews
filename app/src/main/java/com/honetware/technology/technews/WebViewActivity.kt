@@ -9,6 +9,7 @@ import android.view.View
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 /**
@@ -21,7 +22,7 @@ class WebViewActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_web_view)
 
-        val url:String = intent.getStringExtra("url")
+        val url:String = intent.getStringExtra("url").toString()
         val myWebView: WebView = findViewById(R.id.webview)
         val mProgressBar: ProgressBar = findViewById(R.id.progressBar);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -43,7 +44,12 @@ class WebViewActivity : AppCompatActivity() {
 
         myWebView.settings.javaScriptEnabled = true
 
-        myWebView.loadUrl(url)
+        if (url.isNotBlank() && url != ""){
+            myWebView.loadUrl(url)
+        }else{
+            finish()
+            Toast.makeText(this,"Unable to open link",Toast.LENGTH_SHORT).show()
+        }
 
     }
 

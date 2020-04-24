@@ -3,6 +3,7 @@
 
     <Preference
         android:title="@string/about"
+        android:key="about"
         android:summary="@string/about_app" />
 
     <Preference

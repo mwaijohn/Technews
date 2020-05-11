@@ -2,29 +2,36 @@ package com.honetware.technology.technews
 
 import android.content.Intent
 import android.content.res.ColorStateList
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import im.delight.android.webview.AdvancedWebView
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-class WebViewActivity : AppCompatActivity() {
+class WebViewActivity : AppCompatActivity(), AdvancedWebView.Listener {
+    lateinit var mProgressBar: ProgressBar
+    lateinit var myWebView: AdvancedWebView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_web_view)
 
         val url:String = intent.getStringExtra("url").toString()
-        val myWebView: WebView = findViewById(R.id.webview)
-        val mProgressBar: ProgressBar = findViewById(R.id.progressBar);
+
+        myWebView = findViewById(R.id.webview)
+        mProgressBar = findViewById(R.id.progressBar)
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
             mProgressBar.progressTintList = ColorStateList.valueOf(Color.BLUE)
@@ -59,5 +66,26 @@ class WebViewActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    override fun onPageFinished(url: String?) {
+        mProgressBar.visibility = View.GONE
+    }
+
+    override fun onPageError(errorCode: Int, description: String?, failingUrl: String?) {
+       Toast.makeText(this,description + "",Toast.LENGTH_LONG).show()
+        finish()
+    }
+
+    override fun onDownloadRequested(url: String?, suggestedFilename: String?, mimeType: String?, contentLength: Long, contentDisposition: String?, userAgent: String?) {
+        Log.d("msg_tag","Download requested")
+    }
+
+    override fun onExternalPageRequest(url: String?) {
+        Log.d("msg_tag","external page request")
+    }
+
+    override fun onPageStarted(url: String?, favicon: Bitmap?) {
+        mProgressBar.visibility = View.VISIBLE
     }
 }

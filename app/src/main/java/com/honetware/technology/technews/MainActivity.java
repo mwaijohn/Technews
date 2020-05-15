@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
@@ -18,6 +20,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import utils.Prefs;
 import utils.Utils;
+
+import static utils.AdsKt.loadInterstial;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
         if (Prefs.Companion.getMSharedPref() != null){
             Utils.startAlarm(this,true,false);
         }
+
+        MobileAds.initialize(this, initializationStatus -> {
+        });
 
     }
 

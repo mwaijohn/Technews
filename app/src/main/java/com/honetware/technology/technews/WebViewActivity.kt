@@ -13,7 +13,10 @@ import android.webkit.WebView
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.InterstitialAd
 import im.delight.android.webview.AdvancedWebView
+import utils.loadInterstial
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -22,12 +25,14 @@ import im.delight.android.webview.AdvancedWebView
 class WebViewActivity : AppCompatActivity(), AdvancedWebView.Listener {
     lateinit var mProgressBar: ProgressBar
     lateinit var myWebView: AdvancedWebView
+    lateinit var interstitialAd: InterstitialAd
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_web_view)
 
         val url:String = intent.getStringExtra("url").toString()
+        interstitialAd = loadInterstial(this)
 
         myWebView = findViewById(R.id.webview)
         mProgressBar = findViewById(R.id.progressBar)
@@ -65,6 +70,20 @@ class WebViewActivity : AppCompatActivity(), AdvancedWebView.Listener {
         if(intent.getStringExtra("notification") != null){
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+        }else{
+            if (interstitialAd.isLoaded){
+                val adListener = object : AdListener(){
+                    override fun onAdClosed() {
+                        val intent = Intent(this@WebViewActivity, MainActivity::class.java)
+                        startActivity(intent)
+                    }
+                }
+                interstitialAd.adListener = adListener
+                interstitialAd.show()
+            }else{
+                val intent = Intent(this@WebViewActivity, MainActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 
@@ -88,4 +107,5 @@ class WebViewActivity : AppCompatActivity(), AdvancedWebView.Listener {
     override fun onPageStarted(url: String?, favicon: Bitmap?) {
         mProgressBar.visibility = View.VISIBLE
     }
+
 }

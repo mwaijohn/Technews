@@ -65,4 +65,7 @@
     <string name="news_at_one_place">News at one place</string>
     <string name="saved_articles_will_appear_here">saved articles will appear here</string>
     <string name="connetion_error">Connection error</string>
+    <string name="app_id">ca-app-pub-8840949117868676~5768025056</string>
+    <string name="interstitial">ca-app-pub-8840949117868676/5014729477</string>
+    <string name="interstitial_test">ca-app-pub-3940256099942544/1033173712</string>
 </resources>
